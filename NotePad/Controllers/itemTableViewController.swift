@@ -9,13 +9,9 @@ import UIKit
 
 class itemTableViewController: UITableViewController{
     
-    let dbManager = DataBaseManager()
+    let dbManager = DataBaseManager.shared
     var notes: [Note] = [Note]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         loadData()
     }
@@ -44,6 +40,7 @@ class itemTableViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "goToNote", sender: self)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

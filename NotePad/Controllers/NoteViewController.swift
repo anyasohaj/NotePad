@@ -13,6 +13,7 @@ class NoteViewController: UIViewController{
     @IBOutlet weak var bodyLabel: UILabel!
     
     var note = Note()
+    let dbManager = DataBaseManager.shared
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class NoteViewController: UIViewController{
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         UIView.setAnimationsEnabled(false)
         performSegue(withIdentifier: "editAnExistingNote", sender: self)
-       
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -14,7 +14,7 @@ class EditViewController: UIViewController{
     @IBOutlet weak var bodyTextField: UITextField!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var dbManager : DataBaseManager = DataBaseManager()
+    var dbManager : DataBaseManager = DataBaseManager.shared
     var note : Note?
   
     
@@ -31,13 +31,13 @@ class EditViewController: UIViewController{
     }
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        let currentNote: Note = Note(context: context)
-        currentNote.title = titleTextField.text
-        currentNote.body = bodyTextField.text
-        currentNote.date = Date()
+        if note == nil {
+              note = Note(context: context)
+        }
+        note!.title = titleTextField.text
+        note!.body = bodyTextField.text
+        note!.date = Date()
         dbManager.saveNotes()
-        _ = navigationController?.popViewController(animated: true)
+        performSegue(withIdentifier: "goBackToNotes", sender: self)
     }
-    
-
 }

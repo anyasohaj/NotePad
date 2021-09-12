@@ -13,7 +13,7 @@
             <objects>
                 <tableViewController id="kgW-9O-6Ye" customClass="itemTableViewController" customModule="NotePad" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Oq1-bN-Jbt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -53,17 +53,17 @@
             <objects>
                 <viewController id="r7Q-CU-PRD" customClass="NoteViewController" customModule="NotePad" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eKc-VJ-xtv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mv8-b0-7Z6">
-                                <rect key="frame" x="0.0" y="88" width="414" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeR-0V-BL1">
-                                <rect key="frame" x="0.0" y="117" width="414" height="779"/>
+                                <rect key="frame" x="0.0" y="29" width="414" height="813"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -108,12 +108,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wvV-NC-h1E">
-                                <rect key="frame" x="0.0" y="122" width="414" height="740"/>
+                                <rect key="frame" x="0.0" y="34" width="414" height="774"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZSr-fs-zga">
-                                <rect key="frame" x="0.0" y="88" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -142,6 +142,7 @@
                     <connections>
                         <outlet property="bodyTextField" destination="wvV-NC-h1E" id="gfC-hb-GXc"/>
                         <outlet property="titleTextField" destination="ZSr-fs-zga" id="aCQ-6j-8Ul"/>
+                        <segue destination="kgW-9O-6Ye" kind="show" identifier="goBackToNotes" id="NT8-Zr-4TQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGe-or-8bL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -169,6 +170,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="TSg-hq-vo8"/>
+        <segue reference="NT8-Zr-4TQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
