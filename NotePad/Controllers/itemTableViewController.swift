@@ -7,17 +7,28 @@
 
 import UIKit
 
-class itemTableViewController: UITableViewController{
+class itemTableViewController: UITableViewController {
+    
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
     let dbManager = DataBaseManager.shared
     var notes: [Note] = [Note]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.longPressed(_:))))
+        
+        var button = tableView.addSubview(UIButton())
+    
+        
+    }
    
     override func viewWillAppear(_ animated: Bool) {
         loadData()
     }
 
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "editNewNote", sender: self)
+        performSegue(withIdentifier: "editNote", sender: self)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,18 +50,29 @@ class itemTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: "goToNote", sender: self)
+        performSegue(withIdentifier: "editNote", sender: self)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToNote"{
-            let destinationVC = segue.destination as! NoteViewController
+        if segue.identifier == "editNote"{
+            let destinationVC = segue.destination as! EditViewController
             if let selectedRow = tableView.indexPathForSelectedRow?.row{
-                
                 destinationVC.note = notes[selectedRow]
             }
         }
     }
     
+    
+    @IBAction func longPressed(_ sender: UILongPressGestureRecognizer){
+        
+       print("LongPressed")
+    
+    }
+    
+    func deleteItem(){
+        print("Deleting item")
+    }
+    
+  
 }
