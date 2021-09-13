@@ -11,7 +11,7 @@ import CoreData
 class EditViewController: UIViewController{
     
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var bodyTextField: UITextField!
+    @IBOutlet weak var bodyTextView: UITextView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var dbManager : DataBaseManager = DataBaseManager.shared
@@ -22,7 +22,7 @@ class EditViewController: UIViewController{
         super.viewDidLoad()
         if let currentNote = note{
             titleTextField.text = currentNote.title
-            bodyTextField.text = currentNote.body
+            bodyTextView.text = currentNote.body
         }
     }
     
@@ -35,9 +35,9 @@ class EditViewController: UIViewController{
               note = Note(context: context)
         }
         note!.title = titleTextField.text
-        note!.body = bodyTextField.text
+        note!.body = bodyTextView.text
         note!.date = Date()
         dbManager.saveNotes()
-        performSegue(withIdentifier: "goBackToNotes", sender: self)
+        _ = navigationController?.popToRootViewController(animated: true)
     }
 }

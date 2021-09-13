@@ -17,7 +17,7 @@ class NoteViewController: UIViewController{
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        
+       
         titleLabel.text = note.title
         bodyLabel.text = note.body
     }
