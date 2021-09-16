@@ -8,16 +8,14 @@
 import UIKit
 import CoreData
 
-class DataBaseManager{
+class DataBaseManager {
     
     static let shared = DataBaseManager()
-    var notes = [Note]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let request: NSFetchRequest<Note> = Note.fetchRequest()
+    var notes = [Note]()
     
-    private init(){
-      
-    }
+    private init(){}
     
     func saveNotes(){
         do{
@@ -27,25 +25,28 @@ class DataBaseManager{
         }
     }
     
+    func deleteNote(at index: Int){
+        print("dbManager deleteNote method")
+        context.delete(notes[index])
+        notes.remove(at: index)
+        print("remaining objects are \(notes.count)")
+        saveNotes()
+    }
     
- func loadNote(with currentNote: Note){
-        
-        request.predicate = NSPredicate(format: "body == %@", argumentArray: [currentNote])
-        do{
-            self.notes = try context.fetch(request)
-            
-        }catch{
-            print(error)
-        }
+    func loadNote(with currentNote: Note){
+        print("loadNote()")
+        request.predicate = NSPredicate(format: "body == %@", currentNote)
+        loadNotes()
     }
     
     
-func loadAllNotes()->[Note]{
+    func loadNotes()->[Note]{
+    print("loadNotes()->[Note]")
         
         do{
             self.notes = try context.fetch(request)
         }catch{
-            print(error)
+            print("This is my personal error while fetching notes data")
         }
         
         return notes
